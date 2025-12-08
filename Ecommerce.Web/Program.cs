@@ -42,6 +42,7 @@ namespace Ecommerce.Web
                     var services = scope.ServiceProvider;
                     var context = services.GetRequiredService<StoreDbContext>();
                    // var loger = services.GetRequiredService<ILogger<Program>>();
+                   //dfbdffg
                     context.Database.Migrate();
                 }
             }
