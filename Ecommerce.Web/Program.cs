@@ -8,14 +8,7 @@ namespace Ecommerce.Web
 {
     public class Program
     {
-        private ILogger _logger;
-
-        public Program(ILogger _logger)
-        {
-            _logger = _logger;
-
-        }
-
+      
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -35,22 +28,22 @@ namespace Ecommerce.Web
             var app = builder.Build();
 
 
-            try
-            {
-                using (var scope = app.Services.CreateScope())
-                {
-                    var services = scope.ServiceProvider;
-                    var context = services.GetRequiredService<StoreDbContext>();
-                   // var loger = services.GetRequiredService<ILogger<Program>>();
-                   //dfbdffg
-                    context.Database.Migrate();
-                }
-            }
-            catch(Exception ex)
-            {
-                var logger = app.Services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred while migrating or seeding the database.");
-            }
+            //try
+            //{
+            //    using (var scope = app.Services.CreateScope())
+            //    {
+            //        var services = scope.ServiceProvider;
+            //        var context = services.GetRequiredService<StoreDbContext>();
+            //       // var loger = services.GetRequiredService<ILogger<Program>>();
+            //       //dfbdffg
+            //        context.Database.Migrate();
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+            //    logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+            //}
 
 
            
