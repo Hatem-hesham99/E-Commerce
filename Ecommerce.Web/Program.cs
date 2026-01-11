@@ -31,6 +31,7 @@ namespace Ecommerce.Web
 
             builder.Services.AddScoped<IDataInitializar, DataInitializar>();
 
+
             var app = builder.Build();
 
             #region ExtentionMethod
