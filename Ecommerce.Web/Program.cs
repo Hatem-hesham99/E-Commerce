@@ -2,6 +2,10 @@
 using E_Commerce.Domin.Contract;
 using E_Commerce.Presistence.Data.DataSeed;
 using E_Commerce.Presistence.Data.DbContexts;
+using E_Commerce.Presistence.Repositories;
+using E_Commerce.Services.Abstraction.ProductService;
+using E_Commerce.Services.BussniceService;
+using E_Commerce.Services.Mapping;
 using Ecommerce.Web.Extentions;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -30,13 +34,15 @@ namespace Ecommerce.Web
             });
 
             builder.Services.AddScoped<IDataInitializar, DataInitializar>();
-
+            builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddAutoMapper(a => a.AddProfile<ProductProfile>());
 
             var app = builder.Build();
 
             #region ExtentionMethod
-             await app.CreatemigratonAsync();
-             await app.DataBaseSeedingAsync();
+            //await app.CreatemigratonAsync();
+            //await app.DataBaseSeedingAsync();
             #endregion
 
 

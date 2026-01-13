@@ -14,7 +14,5 @@ namespace E_Commerce.Services.Abstraction.ProductService
         Task<IEnumerable<BrandDTO>> GetAllBrandAsync();
         Task<IEnumerable<TypeDTO>> GetAllTypeAsync();
 
-
-
     }
 }

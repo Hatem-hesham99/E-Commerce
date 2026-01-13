@@ -13,7 +13,7 @@ namespace E_Commerce.Presistence.Repositories
     {
         private readonly StoreDbContext _dbContext;
 
-        private readonly Dictionary<Type, object> _repositories;
+        private readonly Dictionary<Type, object> _repositories = [];
         public UnitOfWork(StoreDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -26,9 +26,9 @@ namespace E_Commerce.Presistence.Repositories
         public IGenericRepository<TEntity, TKey> GetGenericRepository<TEntity, TKey>() where TEntity : BaseEntity<TKey>
         {
             var entityType = typeof(TEntity);
-         //   if (_repositories.TryGetValue(entityType , out var Repositories)) return (IGenericRepository<TEntity, TKey>)Repositories;
+            if (_repositories.TryGetValue(entityType , out var Repositories)) return (IGenericRepository<TEntity, TKey>)Repositories;
 
-            if(_repositories.ContainsKey(entityType)) return (IGenericRepository<TEntity, TKey>) _repositories[entityType];
+           // if(_repositories.ContainsKey(entityType)) return (IGenericRepository<TEntity, TKey>) _repositories[entityType];
             var NewRepositories = new GenericRepository<TEntity, TKey>(_dbContext);
 
             _repositories.Add(entityType, NewRepositories);
