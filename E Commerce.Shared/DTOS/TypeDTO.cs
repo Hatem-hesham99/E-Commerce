@@ -8,7 +8,7 @@ namespace E_Commerce.Shared.DTOS
 {
     public class TypeDTO
     {
-        int Id { get; set; }
-        string Name { get; set; } = default!;
+        public int Id { get; set; }
+       public string Name { get; set; } 
     }
 }

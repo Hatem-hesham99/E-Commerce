@@ -36,13 +36,14 @@ namespace Ecommerce.Web
             builder.Services.AddScoped<IDataInitializar, DataInitializar>();
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
             builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddAutoMapper(a => a.AddProfile<ProductProfile>());
+            //builder.Services.AddTransient<ProductPictureUrlResolver>(); 
+            builder.Services.AddAutoMapper(typeof(ProductProfile).Assembly);
 
             var app = builder.Build();
 
             #region ExtentionMethod
-            //await app.CreatemigratonAsync();
-            //await app.DataBaseSeedingAsync();
+            await app.CreatemigratonAsync();
+            await app.DataBaseSeedingAsync();
             #endregion
 
 
@@ -87,6 +88,7 @@ namespace Ecommerce.Web
 
             app.UseAuthorization();
 
+            app.UseStaticFiles();
 
             app.MapControllers();
 

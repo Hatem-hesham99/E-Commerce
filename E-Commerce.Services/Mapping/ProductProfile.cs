@@ -16,6 +16,7 @@ namespace E_Commerce.Services.Mapping
             CreateMap<Product,ProductDTO>()
                 .ForMember(dis=>dis.ProductBrand, op=>op.MapFrom(src=>src.ProductBrand.Name))
                 .ForMember(dis=>dis.ProductType,op=>op.MapFrom(src=>src.ProductType.Name))
+                .ForMember(des=>des.PictureUrl, op=>op.MapFrom<ProductPictureUrlResolver>())
                 .ReverseMap();
 
             CreateMap<ProductType,TypeDTO>().ReverseMap();
